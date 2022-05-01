@@ -1,9 +1,9 @@
 // I wish you good luck and happy coding 🥰🤠🥳🥳💯💯
 
 
-import {monsters} from "./monsters.js"
+import { monsters } from "./monsters.js"
 
-for (let mosterdiv of monsters){
+for (let mosterdiv of monsters) {
     mon(mosterdiv);
 }
 
@@ -46,7 +46,10 @@ function notFound() {
 
     notFoundDiv.append(nFspan, h1);
 
-    document.querySelector(".monster").append("h1");
+    document.querySelector(".monsters").append("notFoundDiv");
+    console.log(notFoundDiv);
+
+
 };
 
 
@@ -55,3 +58,36 @@ function notFound() {
 // <span>404</span>
 // <h1>🧟‍♂️ No Monster Found 🧟‍♂️</h1>
 // </div>
+
+
+//SEARCH IMPLEMENT
+document.querySelector("#search-monster").addEventListener('keyup', function (e) {
+    const keyword = e.target.value.toLowerCase();
+    console.log(e);
+    console.log(keyword);
+
+    const findmonster = document.querySelectorAll(".monster");
+
+    for (let monster of findmonster) {
+
+        const name = monster.children[1].innerText.toLowerCase();
+        const email = monster.children[2].innerText.toLowerCase();
+        console.log(monster.children);
+            if (name.inlcudes(keyword) || email.includes(keyword)) {
+                monster.style.display = 'block';
+                notFound = false;
+
+            } else { 
+                monster.style.display = 'none' };
+
+        
+    };
+
+    let notFound =true;
+    if (notFound) {
+                document.querySelector('.not-found').style.display = 'block'
+
+            } else { 
+                document.querySelector('.not-found').style.display = 'none'};
+
+});
